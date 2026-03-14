@@ -20,7 +20,7 @@ employment_years = st.sidebar.slider("Employment Years", 0, 40, 5)
 age = st.sidebar.slider("Age", 18, 75, 30)
 
 # API endpoint
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = "http://127.0.0.1:8002/predict"
 
 if st.sidebar.button("Submit Application"):
     payload = {
