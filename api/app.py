@@ -54,10 +54,12 @@ def predict_loan(app_data: LoanApplication):
         
         explanations = []
         for name, val in zip(feature_names, shap_vals):
-            impact = "positive" if val > 0 else "negative"
+            # Ensuring val is a scalar for the comparison to avoid ambiguous truth value errors
+            scalar_val = float(val.item() if hasattr(val, 'item') else val)
+            impact = "positive" if scalar_val > 0 else "negative"
             explanations.append({
                 "feature": name,
-                "impact_score": round(float(val), 4),
+                "impact_score": round(scalar_val, 4),
                 "direction": impact
             })
             
